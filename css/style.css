@@ -1,0 +1,189 @@
+/*GENERELLE REGLER*/
+
+/*Dette fjerner browsernes padding og margin fra selve body og ikke fra f.eks. lister og overskrifter, hvor vi ofte gerne vil beholde det*/
+body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/*Box-sizing skal gælde for alle elementer, hvorfor den sættes på * og ikke bare body */
+* {
+    box-sizing: border-box;
+}
+
+/*Da vi bruger flexbox er det en god idé altid at sætte billeder til 100% width og så tilpasse den container rundt om billedet efterfølgende*/
+img {
+    width: 100%;
+}
+
+header {
+    background: white;
+    width: 100%;
+    padding: 10px;
+}
+
+/*NAVIGATION - responsiv med flexbox*/
+#logo-burger {
+    display: flex;
+    align-items: center;
+    margin: 0 .5em;
+}
+
+#logo-burger a {
+    margin-right: auto;
+    width: 100px;
+}
+
+#main-nav {
+    display: flex;
+    margin-right: .5em;
+}
+
+#main-nav a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
+#main-nav a:hover {
+    color: grey;
+}
+
+/*active class sættes på det link i menuen man befinder sig på, så farven ændres på menuen på den aktuelle side - den er ikke sat på noget endnu*/
+.active {
+    color: lightgrey;
+}
+
+/*Denne skjuler burgermenuens checkbox som aktiverer toggle funktionen*/
+.hidden {
+    display: none;
+}
+
+/*MEDIA QUERY MOBILE */
+
+@media all and (max-width: 599px) {
+
+    /*HEADER NAV*/
+    header {
+        display: block;
+    }
+
+    #logo-burger {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /*label er selve burgerikonet*/
+    #logo-burger label {
+        display: block;
+        font-size: 2em;
+        cursor: pointer;
+        /*laver en hånd i stedet for en pil, når man kører hen over burgermenuen*/
+    }
+
+    /*Dette gør at burgermenuen folder sig ud, når man klikker på den - eller rettere sagt den checkboks som er skjult bag den*/
+    #toggle:checked + #main-nav {
+        display: block;
+    }
+
+    /*Den primære navigation skjules på den lille skærm*/
+    #main-nav {
+        display: none;
+    }
+
+    #main-nav a {
+        text-align: center;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /*Dette påvirker dropdown i mobilversionen, da hover ikke virker med fingeren, så nu er det hele foldet ud, border er fjernet og skriften er mindre.*/
+    #main-nav .dropdown-content a {
+        font-size: 0.9em;
+        border: none;
+    }
+}
+
+/*MEDIA QUERY TABLET AND ABOVE*/
+
+@media all and (min-width: 600px) {
+
+    /*HEADER NAV*/
+    nav {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+    }
+
+
+    #main-nav {
+        justify-content: space-evenly;
+        min-width: 50%;
+        margin: 0;
+    }
+
+    #main-nav a {
+        margin: 0 .5em;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    /*Dette fjerner burgermenu ikonet*/
+    label {
+        display: none;
+    }
+
+    /*Dropdown*/
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #fff;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover {
+        background-color: blue;
+    }
+
+}
+
+/*MEDIA QUERY LAPTOP AND ABOVE*/
+
+@media all and (min-width: 1024px) {
+
+    /*NAVIGATION*/
+    nav {
+        flex-direction: row;
+    }
+
+    /*Dette skubber menuen ud til højre ved at bruge al margin til højre for logoet*/
+    #logo-burger {
+        margin-right: auto;
+    }
+}

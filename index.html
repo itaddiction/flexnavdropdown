@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- unik title til hver side-->
+    <title>Responsiv navigation med flexbox</title>
+    <!--udfyld content med en beskrivelse af sidens indhold - unik for hver side - op til ca. 155 karakterer-->
+    <meta name="description" content="">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div id="logo-burger">
+                <a href="index.html"><img src="images/logo.png" alt=""></a>
+                <label for="toggle">&#9776;</label>
+            </div>
+            <!--dette er en checkbox som gør det muligt at folde burgermenuen ud, og den skal ligge udenfor de to divs-->
+            <input type="checkbox" id="toggle" class="hidden">
+
+            <div id="main-nav">
+                <a href="#">Blog</a>
+                <div class="dropdown">
+                    <a href="#">Portfolio
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#">Web</a>
+                        <a href="#">Design</a>
+                        <a href="#">Foto</a>
+                    </div>
+                </div>
+                <a href="#">Kontakt</a>
+            </div>
+        </nav>
+        <hr>
+    </header>
+
+
+</body>
+
+</html>
